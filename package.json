@@ -1,6 +1,6 @@
 {
   "name": "@linked.cm/zoho-cpaas",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zoho CPaaS (formerly ZeptoMail) email provider for LINKED apps: registers with LinkedEmail when ZEPTOMAIL_API_KEY is set.",
   "type": "module",
   "linked": {
