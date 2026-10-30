@@ -1,0 +1,30 @@
+# Calls the shared workflow in this repo's OWN org `.github` repo, which runs both PR gates — `Build & Test` and
+# `Check for changeset` — as jobs of one workflow. The per-repo ci.yml and changeset-check.yml
+# this replaces shared a trigger and were both PR gates.
+#
+# The required status check on `main` is `checks / Build & Test`: GitHub reports a job invoked
+# through `workflow_call` as `<caller-job-id> / <job name>`, and the caller job below is `checks`.
+# Renaming this job renames the check, and a branch protection still pinning the old name waits
+# forever on a check that no longer reports.
+name: PR
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  checks:
+    uses: linked-cm/.github/.github/workflows/pr.yml@v1
+    # The changeset reminder posts a PR comment. A reusable workflow only holds what its caller
+    # granted it, and the org default is read-only.
+    permissions:
+      contents: read
+      pull-requests: write
+    with:
+      # true makes a missing or failing `test` script fail the PR. `linked setup-publish` writes
+      # true when package.json has a `test` script and false when it does not, so a fresh scaffold
+      # still passes. Flip it to true once a suite exists, and set `test-script` to the unit-only
+      # script where `test` is not CI-safe.
+      require-tests: true
+      run-e2e: false

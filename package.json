@@ -1,0 +1,75 @@
+{
+  "name": "@linked.cm/zoho-cpaas",
+  "version": "0.1.0",
+  "description": "Zoho CPaaS (formerly ZeptoMail) email provider for LINKED apps: registers with LinkedEmail when ZEPTOMAIL_API_KEY is set.",
+  "type": "module",
+  "linked": {
+    "kind": "library"
+  },
+  "main": "lib/esm/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linked-cm/zoho-cpaas.git"
+  },
+  "homepage": "https://github.com/linked-cm/zoho-cpaas#readme",
+  "bugs": {
+    "url": "https://github.com/linked-cm/zoho-cpaas/issues"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "npm exec linked dev",
+    "build": "linked build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test test/*.test.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/esm/index.d.ts",
+      "import": "./lib/esm/index.js"
+    },
+    "./backend": {
+      "types": "./lib/esm/backend.d.ts",
+      "import": "./lib/esm/backend.js"
+    },
+    "./package": {
+      "types": "./lib/esm/package.d.ts",
+      "import": "./lib/esm/package.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/esm/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@_linked/core": "^2.45.0",
+    "@_linked/server-utils": "^1.17.0"
+  },
+  "devDependencies": {
+    "@_linked/cli": "^1.60.0",
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.2"
+  },
+  "keywords": [
+    "linked",
+    "email",
+    "zoho",
+    "zeptomail",
+    "cpaas"
+  ],
+  "packageManager": "npm@12.2.0"
+}
