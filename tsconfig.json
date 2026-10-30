@@ -4,6 +4,7 @@
     "moduleResolution": "Bundler",
     "target": "ES2022",
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
